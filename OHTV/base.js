@@ -55,11 +55,8 @@ function menuInit() {
 }
 
 function menuSelect(i) {
-  if (i<=0) {
-    i = 0;
-  } else if (i>=opts.length) {
-    i = opts.length-1;
-  }
+  // TODO(sunglim): Do refactoring.
+  i = (i <= 0) ? 0 : opts.length - 1;
   selected = i;
   var scroll = Math.max(0, Math.min(opts.length-13, selected-6));
   for (i=0; i<opts.length; i++) {
@@ -70,7 +67,7 @@ function menuSelect(i) {
 
 function showStatus(succss, txt, cannotDetermine) {
   var elem = document.getElementById('status');
-  if(cannotDetermine){
+  if (cannotDetermine) {
     elem.className = 'statnotsure';
     setInstr('Test ended, please execute the next test<br />(press OK).');
     if (opts) menuSelect(selected+1);
